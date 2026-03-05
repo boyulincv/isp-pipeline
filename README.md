@@ -17,7 +17,8 @@ Install dependencies
 
 ```bash
 pip install -r requirements.txt
-
+```
 To run the demo:
 ```bash
 python main.py --in data/input.png --out results/final.png --save-stages
+```
