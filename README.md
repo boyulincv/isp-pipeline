@@ -1,2 +1,12 @@
 # isp-pipeline
-A simplified Image Signal Processing (ISP) pipeline implemented in Python.
+This project implements a simplified Image Signal Processing (ISP) pipeline
+that converts RAW Bayer images into RGB images.
+
+Pipeline includes:
+
+- Black level correction
+- White balance
+- Demosaicing
+- Color correction
+- Gamma correction
+- Tone mapping
