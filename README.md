@@ -10,3 +10,6 @@ Pipeline includes:
 - Color correction
 - Gamma correction
 - Tone mapping
+
+To run the demo:
+python main.py --in data/input.png --out results/final.png --save-stages
