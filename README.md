@@ -42,6 +42,8 @@ I --> J[Final Image]
 ```
 
 ## Results
+### Input
+![Input](data/input.png)
 
 ### Bayer Mosaic
 ![Bayer](results/00_bayer.png)
