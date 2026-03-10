@@ -5,13 +5,13 @@ from isp.io import read_bgr, write_bgr
 from isp.mosaic import bgr_to_rgb_float01, make_bayer_rggb
 from isp.pipeline import ISPConfig, run_isp_rggb
 
-def rgb01_to_bgr8(rgb01: np.ndarray) -> np.ndarray:
-    rgb8 = (np.clip(rgb01, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8)
-    bgr8 = rgb8[..., ::-1]
+def rgb01_to_bgr8(rgb01: np.ndarray) -> np.ndarray: # RGB[0,1] to BGR[0,255]
+    rgb8 = (np.clip(rgb01, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8) # + 0.5 for round
+    bgr8 = rgb8[:, :, ::-1] # channel reverse from RGB to BGR
     return bgr8
 
 def gray01_to_bgr8(gray01: np.ndarray) -> np.ndarray:
-    g8 = (np.clip(gray01, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8)
+    g8 = (np.clip(gray01, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8) 
     return np.stack([g8, g8, g8], axis=-1)
 
 def main():
