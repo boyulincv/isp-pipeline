@@ -34,11 +34,10 @@ def main():
 
     final_rgb01, stages = run_isp_rggb(bayer01, cfg)
 
-    # save final
+    # save results
     write_bgr(args.out, rgb01_to_bgr8(final_rgb01))
 
     if args.save_stages:
-        # save bayer visualization + stages
         write_bgr("results/00_bayer.png", gray01_to_bgr8(bayer01))
         for k, v in stages.items():
             write_bgr(f"results/{k}.png", rgb01_to_bgr8(v))
