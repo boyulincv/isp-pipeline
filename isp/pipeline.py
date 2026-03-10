@@ -8,7 +8,7 @@ from .color import apply_white_balance_rgb, apply_ccm, gamma_encode, tone_map_re
 class ISPConfig:
     wb_gains: tuple = (2.0, 1.0, 1.5)  # (R,G,B)
     ccm: np.ndarray = field(default_factory=lambda: np.eye(3, dtype=np.float32))
-    gamma: float = 2.2
+    gamma: float = 1.5
     tone_mapping: str = "reinhard"  # or "none"
 
 def run_isp_rggb(bayer01: np.ndarray, cfg: ISPConfig):
