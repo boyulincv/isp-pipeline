@@ -32,7 +32,7 @@ python main.py --in data/input.png --out results/final.png --save-stages --wb-mo
 ```mermaid
 flowchart TD
 A[Input RGB Image] --> B[Convert to float 0-1]
-B --> C[Inverse Gamm (Liearization)]
+B --> C[Inverse Gamma]
 C --> D[Bayer Mosaic RGGB]
 D --> E[Demosaicing Bilinear]
 E --> F[White Balance]
