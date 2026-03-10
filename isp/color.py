@@ -43,5 +43,5 @@ def tone_map_reinhard(rgb01: np.ndarray) -> np.ndarray:
     """
     Simple global Reinhard tone mapping on linear-ish RGB
     """
-    rgb01 = np.clip(rgb01, 0.0, 1.0)
-    return (rgb01 / (1.0 + rgb01)).astype(np.float32)
+    #rgb01 = np.maximum(rgb01, 0.0)
+    return rgb01 #(rgb01 / (1.0 + rgb01)).astype(np.float32)
