@@ -61,11 +61,11 @@ J --> K[Final Image]
 isp-pipeline/  
 ├── data/  
 ├── isp/  
-│    ├── color.py  
-│    ├── demosaic.py  
-│    ├── io.py  
-│    ├── mosaic.py  
-│    └── pipeline.py  
+│         ├── color.py  
+│         ├── demosaic.py  
+│         ├── io.py  
+│         ├── mosaic.py  
+│         └── pipeline.py  
 ├── results/  
 ├── main.py  
 ├── requirements.txt  
