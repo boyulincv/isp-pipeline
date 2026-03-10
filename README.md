@@ -5,6 +5,7 @@ It simulates a Bayer RGGB sensor from an RGB image and reconstructs the final RG
 
 ## Pipeline Includes
 
+- Inverse Gamma (Linearization)
 - Bayer mosaic simulation (RGGB)
 - Demosaicing
 - White balance
@@ -31,14 +32,15 @@ python main.py --in data/input.png --out results/final.png --save-stages
 ```mermaid
 flowchart TD
 A[Input RGB Image] --> B[Convert to float 0-1]
-B --> C[Bayer Mosaic RGGB]
-C --> D[Demosaicing Bilinear]
-D --> E[White Balance]
-E --> F[Color Correction Matrix]
-F --> G[Tone Mapping]
-G --> H[Gamma Correction]
-H --> I[Convert to uint8 BGR]
-I --> J[Final Image]
+B --> C[Inverse Gamm (Liearization)]
+C --> D[Bayer Mosaic RGGB]
+D --> E[Demosaicing Bilinear]
+E --> F[White Balance]
+F --> G[Color Correction Matrix]
+G --> H[Tone Mapping]
+H --> I[Gamma Correction]
+I --> J[Convert to uint8 BGR]
+J --> K[Final Image]
 ```
 
 ## Results
