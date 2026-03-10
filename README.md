@@ -24,7 +24,7 @@ pip install -r requirements.txt
 Place an input image at `data/input.png`, then run:
 
 ```bash
-python main.py --in data/input.png --out results/final.png --save-stages
+python main.py --in data/input.png --out results/final.png --save-stages --wb-mode gray_world
 ```
 
 ## ISP Pipeline

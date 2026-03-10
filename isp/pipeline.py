@@ -2,12 +2,13 @@ import numpy as np
 from dataclasses import dataclass, field
 
 from .demosaic import demosaic_bilinear_rggb
-from .color import apply_white_balance_rgb, apply_ccm, tone_map_reinhard
+from .color import apply_white_balance_rgb, apply_ccm, tone_map_reinhard, estimate_gray_world_gains
 from .gamma import gamma_encode
 
 @dataclass
 class ISPConfig:
-    wb_gains: tuple = (2.0, 1.0, 1.5)  # (R,G,B)
+    wb_mode: str = "gray_world" # "gray world" or "manual (use wb_gains below)"
+    wb_gains: tuple = (2.0, 1.0, 2.0)  # (R,G,B)
     ccm: np.ndarray = field(default_factory=lambda: np.eye(3, dtype=np.float32))
     gamma: float = 2.2
     tone_mapping: str = "reinhard"  # or "none"
@@ -20,6 +21,12 @@ def run_isp_rggb(bayer01: np.ndarray, cfg: ISPConfig):
     stages["01_demosaic"] = rgb
 
     # 2) White balance
+
+    if cfg.wb_mode == "gray_world":
+        wb_gains = estimate_gray_world_gains(rgb)
+    else:
+        wb_gains = cfg.wb_gains
+
     rgb = apply_white_balance_rgb(rgb, cfg.wb_gains)
     stages["02_white_balance"] = rgb
 

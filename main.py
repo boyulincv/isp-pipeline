@@ -20,12 +20,13 @@ def main():
     ap.add_argument("--in", dest="inp", required=True, help="input image path (png/jpg)")
     ap.add_argument("--out", dest="out", required=True, help="output final image path")
     ap.add_argument("--save-stages", action="store_true", help="save intermediate stage images")
-    ap.add_argument("--wb", type=str, default="2.0,1.0,1.5", help="white balance gains r,g,b")
+    ap.add_argument("--wb-mode", type=str, default="gray_world", choices=["manual", "gray_world"])
+    ap.add_argument("--wb", type=str, default="2.0,1.0,2.0", help="white balance gains r,g,b")
     ap.add_argument("--gamma", type=float, default=2.2)
     args = ap.parse_args()
 
     wb = tuple(float(x) for x in args.wb.split(","))
-    cfg = ISPConfig(wb_gains=wb, gamma=args.gamma)
+    cfg = ISPConfig(wb_mode=args.wb_mode, wb_gains=wb, gamma=args.gamma)
 
     img_bgr = read_bgr(args.inp)
     rgb01 = bgr_to_rgb_float01(img_bgr)

@@ -1,5 +1,22 @@
 import numpy as np
 
+def estimate_gray_world_gains(rgb01: np.ndarray, eps: float = 1e-6) -> tuple:
+    """
+    Estimate white balance gains using Gray World Assumption.
+    Returns (r_gain, g_gain, b_gain).
+    """
+    rgb01 = np.clip(rgb01, 0.0, 1.0)
+
+    r_avg = float(np.mean(rgb01[..., 0]))
+    g_avg = float(np.mean(rgb01[..., 1]))
+    b_avg = float(np.mean(rgb01[..., 2]))
+
+    r_gain = g_avg / (r_avg + eps)
+    g_gain = 1.0
+    b_gain = g_avg / (b_avg + eps)
+
+    return (r_gain, g_gain, b_gain)
+
 def apply_white_balance_rgb(rgb01: np.ndarray, gains=(2.0, 1.0, 1.5)) -> np.ndarray:
     """
     gains: (r_gain, g_gain, b_gain)
