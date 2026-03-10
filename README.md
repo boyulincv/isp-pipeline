@@ -13,19 +13,7 @@ It simulates a Bayer RGGB sensor from an RGB image and reconstructs the final RG
 - Tone mapping
 - Gamma correction
 
-## Quickstart
 
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Place an input image at `data/input.png`, then run:
-
-```bash
-python main.py --in data/input.png --out results/final.png --save-stages --wb-mode gray_world
-```
 
 ## ISP Pipeline
 
@@ -70,3 +58,18 @@ isp-pipeline/
 ├── main.py  
 ├── requirements.txt  
 └── README.md  
+
+
+## Quickstart
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Place an input image at `data/input.png`, then run:
+
+```bash
+python main.py --in data/input.png --out results/final.png --save-stages --wb-mode gray_world
+```
