@@ -30,7 +30,7 @@ def apply_white_balance_rgb(rgb01: np.ndarray, gains=(2.0, 1.0, 1.5)) -> np.ndar
 
 def apply_ccm(rgb01: np.ndarray, ccm: np.ndarray) -> np.ndarray:
     """
-    ccm: 3x3 matrix, applied to RGB vectors.
+    ccm: 3x3 matrix, applied to RGB vectors. (identical metrix here)
     """
     h, w, _ = rgb01.shape
     flat = rgb01.reshape(-1, 3)
@@ -40,8 +40,6 @@ def apply_ccm(rgb01: np.ndarray, ccm: np.ndarray) -> np.ndarray:
 
 
 def tone_map_reinhard(rgb01: np.ndarray) -> np.ndarray:
-    """
-    Simple global Reinhard tone mapping on linear-ish RGB
-    """
+
     #rgb01 = np.maximum(rgb01, 0.0)
-    return rgb01 #(rgb01 / (1.0 + rgb01)).astype(np.float32)
+    return rgb01 #(rgb01 / (1.0 + rgb01)).astype(np.float32) (reinhard tone mapping)
