@@ -2,7 +2,8 @@ import numpy as np
 from dataclasses import dataclass, field
 
 from .demosaic import demosaic_bilinear_rggb
-from .color import apply_white_balance_rgb, apply_ccm, gamma_encode, tone_map_reinhard
+from .color import apply_white_balance_rgb, apply_ccm, tone_map_reinhard
+from .gamma import gamma_encode
 
 @dataclass
 class ISPConfig:

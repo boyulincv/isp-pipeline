@@ -21,10 +21,6 @@ def apply_ccm(rgb01: np.ndarray, ccm: np.ndarray) -> np.ndarray:
     out = out.reshape(h, w, 3)
     return np.clip(out, 0.0, 1.0)
 
-def gamma_encode(rgb01: np.ndarray, gamma: float = 2.2) -> np.ndarray:
-    # assume linear input, output is display-ish
-    rgb01 = np.clip(rgb01, 0.0, 1.0)
-    return np.power(rgb01, 1.0 / gamma).astype(np.float32)
 
 def tone_map_reinhard(rgb01: np.ndarray) -> np.ndarray:
     """

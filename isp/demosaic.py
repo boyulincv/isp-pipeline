@@ -13,7 +13,7 @@ def demosaic_bilinear_rggb(bayer01: np.ndarray) -> np.ndarray:
     b16 = np.clip(bayer01 * 65535.0, 0, 65535).astype(np.uint16)
 
     # RGGB -> OpenCV demosaic gives BGR output
-    bgr16 = cv2.cvtColor(b16, cv2.COLOR_BayerRGGB2BGR)
+    bgr16 = cv2.cvtColor(b16, cv2.COLOR_BayerBG2BGR)
 
     rgb01 = (bgr16[..., ::-1].astype(np.float32) / 65535.0)
     return np.clip(rgb01, 0.0, 1.0)

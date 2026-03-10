@@ -4,6 +4,7 @@ import numpy as np
 from isp.io import read_bgr, write_bgr
 from isp.mosaic import bgr_to_rgb_float01, make_bayer_rggb
 from isp.pipeline import ISPConfig, run_isp_rggb
+from isp.gamma import inverse_gamma
 
 def rgb01_to_bgr8(rgb01: np.ndarray) -> np.ndarray: # RGB[0,1] to BGR[0,255]
     rgb8 = (np.clip(rgb01, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8) # + 0.5 for round
@@ -29,6 +30,8 @@ def main():
     img_bgr = read_bgr(args.inp)
     rgb01 = bgr_to_rgb_float01(img_bgr)
 
+    # convert sRGB → linear
+    rgb01 = inverse_gamma(rgb01)
     # simulate RAW Bayer (RGGB)
     bayer01 = make_bayer_rggb(rgb01)
 
