@@ -41,6 +41,9 @@ J --> K[Final Image]
 ### Demosaiced Image
 ![Demosaic](results/01_demosaic.png)
 
+### White Balance
+![White Balance](results/02_white_balance.png)
+
 ### Final Output
 ![Final](results/final.png)
 
